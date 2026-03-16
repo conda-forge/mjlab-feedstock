@@ -9,7 +9,7 @@ version = "3.56.3"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/mjlab-feedstock"
 authors = ["@conda-forge/mjlab"]
 channels = ["conda-forge"]
-platforms = ["linux-64", "osx-64", "win-64"]
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
 requires-pixi = ">=0.59.0"
 
 [dependencies]
@@ -29,6 +29,12 @@ description = "Build mjlab-feedstock with variant linux_64_ directly (without se
 [tasks."inspect-linux_64_"]
 cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_.yaml"
 description = "List contents of mjlab-feedstock packages built for variant linux_64_"
+[tasks."build-osx_arm64_"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/osx_arm64_.yaml"
+description = "Build mjlab-feedstock with variant osx_arm64_ directly (without setup scripts)"
+[tasks."inspect-osx_arm64_"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_arm64_.yaml"
+description = "List contents of mjlab-feedstock packages built for variant osx_arm64_"
 
 [feature.smithy.dependencies]
 conda-smithy = "*"
