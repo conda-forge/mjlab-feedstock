@@ -3,7 +3,7 @@ schema_version: 1
 context:
   name: mjlab
   version: 1.2.0
-  build_number: 0
+  build_number: 1
 
 package:
   name: ${{ name|lower }}
