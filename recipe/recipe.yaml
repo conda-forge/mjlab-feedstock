@@ -3,7 +3,7 @@ schema_version: 1
 context:
   name: mjlab
   version: 1.2.0
-  build_number: 0
+  build_number: 1
 
 package:
   name: ${{ name|lower }}
@@ -15,7 +15,12 @@ source:
 
 build:
   number: ${{ build_number }}
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    - if: not linux
+      then:
+        - sed -i '' "s/\"torchrunx\([^\"]*\)\"/\"torchrunx\1; sys_platform == 'linux'\"/" pyproject.toml
+        - cat pyproject.toml
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   noarch: python
 
 requirements:
@@ -45,6 +50,10 @@ requirements:
     - tensorboard >=2.20.0
     - onnxscript >=0.5.4
     - wandb >=0.22.3
+  run_constraints:
+    - if: not linux
+      then:
+        - __linux ==0.0.0
 
 tests:
   - python:
