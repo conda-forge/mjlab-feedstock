@@ -45,6 +45,10 @@ requirements:
     - tensorboard >=2.20.0
     - onnxscript >=0.5.4
     - wandb >=0.22.3
+  run_constraints:
+    - if: not linux
+      then:
+        - __linux ==0.0.0
 
 tests:
   - python:
