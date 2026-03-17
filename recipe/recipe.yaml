@@ -15,7 +15,12 @@ source:
 
 build:
   number: ${{ build_number }}
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    - if: not linux
+      then:
+        - sed -i "s/\"torchrunx\([^\"]*\)\"/\"torchrunx\1; sys_platform == 'linux'\"/" pyproject.toml
+        - cat pyproject.toml
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   noarch: python
 
 requirements:
