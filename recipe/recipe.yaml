@@ -39,10 +39,10 @@ requirements:
         - __linux
         - torchrunx >=0.3.4
     - warp-lang >=1.12.0
-    - mujoco-warp >=3.5.0
-    - mujoco >=3.5.0
+    - mujoco-warp >=3.7.0.1
+    - mujoco >=3.7.0
     - trimesh >=4.8.3
-    - viser >=1.0.24
+    - viser >=1.0.26
     - mediapy >=1.2.6
     - imageio-ffmpeg
     - tensordict
@@ -60,9 +60,9 @@ tests:
       imports:
         - mjlab
       pip_check: true
-      python_version: 3.11.*
+      python_version: ${{ python_min }}.*
   - script:
-      - pytest tests/ --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags"
+      - pytest tests/
     files:
       source:
         - pyproject.toml
@@ -71,7 +71,7 @@ tests:
     requirements:
       run:
         - pytest
-        - python 3.11.*
+        - python ${{ python_min }}.*
         - scipy
 
 about:
