@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: mjlab
-  version: 1.2.0
-  build_number: 1
+  version: "1.3.0"
+  build_number: 0
 
 package:
   name: ${{ name|lower }}
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://github.com/mujocolab/mjlab/archive/refs/tags/v${{ version }}.zip
-  sha256: 79aa96c2bc1d7d1c1689287357a47f3af68e37c2851886e9e9869b096df3c3e5
+  sha256: dcbc8ff6a575b6bdf66ccf1272ec7cbebcf447f9da66316de1f01a06e815b68b
 
 build:
   number: ${{ build_number }}
@@ -39,10 +39,10 @@ requirements:
         - __linux
         - torchrunx >=0.3.4
     - warp-lang >=1.12.0
-    - mujoco-warp >=3.5.0
-    - mujoco >=3.5.0
+    - mujoco-warp >=3.7.0.1
+    - mujoco >=3.7.0
     - trimesh >=4.8.3
-    - viser >=1.0.24
+    - viser >=1.0.26
     - mediapy >=1.2.6
     - imageio-ffmpeg
     - tensordict
@@ -60,10 +60,9 @@ tests:
       imports:
         - mjlab
       pip_check: true
-      python_version: 3.11.*
+      python_version: ${{ python_min }}.*
   - script:
       - pytest tests/
-        --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags"
     files:
       source:
         - pyproject.toml
@@ -72,7 +71,7 @@ tests:
     requirements:
       run:
         - pytest
-        - python 3.11.*
+        - python ${{ python_min }}.*
         - scipy
 
 about:
