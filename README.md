@@ -146,4 +146,5 @@ Feedstock Maintainers
 =====================
 
 * [@diegoferigo](https://github.com/diegoferigo/)
+* [@kevinzakka](https://github.com/kevinzakka/)
 
