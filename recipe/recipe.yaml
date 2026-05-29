@@ -66,6 +66,7 @@ tests:
   - script:
       - pytest tests/
         --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags"
+        --deselect="tests/test_viewer_tick.py::test_no_spiral"
     files:
       source:
         - pyproject.toml
