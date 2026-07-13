@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: mjlab
-  version: "1.4.0"
+  version: "1.5.0"
   build_number: 0
 
 package:
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://github.com/mujocolab/mjlab/archive/refs/tags/v${{ version }}.zip
-  sha256: 30944f4f7cfaf85887ebc62070692d9045a96a7f2ee965d867c4ff80021a8a04
+  sha256: 7ac44e194924d44561202118dd5f0adcf55ec9afdc50d75a46f1649767f62804
 
 build:
   number: ${{ build_number }}
