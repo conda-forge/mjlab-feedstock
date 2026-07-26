@@ -53,6 +53,8 @@ requirements:
     - tensorboard >=2.20.0
     - onnxscript >=0.5.4
     - wandb >=0.22.3
+    # Additional deps
+    - ffmpeg >=4
   run_constraints:
     - if: not linux
       then:
@@ -61,12 +63,10 @@ requirements:
 tests:
   - python:
       imports:
-        # - mjlab
+        - mjlab
       pip_check: true
       python_version: ${{ python_min }}.*
   - script:
-      - export IMAGEIO_FFMPEG_EXE=$(which ffmpeg)
-      - python -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_version())"
       - pytest tests/
         --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags"
         --deselect="tests/test_viewer_tick.py::test_no_spiral"
@@ -80,8 +80,6 @@ tests:
         - pytest
         - python ${{ python_min }}.*
         - scipy
-        # - x264
-        - ffmpeg >=8
 
 about:
   homepage: https://mujocolab.github.io/mjlab/
