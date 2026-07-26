@@ -80,6 +80,7 @@ tests:
         - pytest
         - python ${{ python_min }}.*
         - scipy
+        - x264
 
 about:
   homepage: https://mujocolab.github.io/mjlab/
