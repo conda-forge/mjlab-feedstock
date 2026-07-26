@@ -65,6 +65,7 @@ tests:
       pip_check: true
       python_version: ${{ python_min }}.*
   - script:
+      - python -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_version())"
       - export IMAGEIO_FFMPEG_EXE=$(which ffmpeg)
       - pytest tests/
         --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags"
