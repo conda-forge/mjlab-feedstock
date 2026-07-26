@@ -80,7 +80,8 @@ tests:
         - pytest
         - python ${{ python_min }}.*
         - scipy
-        - x264
+        # - x264
+        - ffmpeg >=8
 
 about:
   homepage: https://mujocolab.github.io/mjlab/
