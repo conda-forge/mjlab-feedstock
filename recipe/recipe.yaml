@@ -38,17 +38,18 @@ requirements:
       then:
         - __linux
         - torchrunx >=0.3.4
-    - warp-lang >=1.12.0
-    - mujoco-warp >=3.8.0.3,<3.9
-    - mujoco >=3.8.0,<3.9
+    - warp-lang >=1.14.0
+    - mujoco-warp >=3.10.0.3,<3.11
+    - mujoco >=3.10.0,<3.11
     - trimesh >=4.8.3
     - scipy >=1.15
     - viser >=1.0.27
     - mjviser >=0.0.14
     - mediapy >=1.2.6
+    - numpy <2.5
     - imageio-ffmpeg
     - tensordict
-    - rsl-rl-lib ==5.2.0
+    - rsl-rl-lib ==5.4.0
     - tensorboard >=2.20.0
     - onnxscript >=0.5.4
     - wandb >=0.22.3
@@ -64,7 +65,9 @@ tests:
       pip_check: true
       python_version: ${{ python_min }}.*
   - script:
-      - pytest tests/ --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags" --deselect="tests/test_viewer_tick.py::test_no_spiral"
+      - pytest tests/ 
+        --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags" 
+        --deselect="tests/test_viewer_tick.py::test_no_spiral"
     files:
       source:
         - pyproject.toml
