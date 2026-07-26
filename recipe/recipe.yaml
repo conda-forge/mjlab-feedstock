@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: mjlab
-  version: "1.4.0"
+  version: "1.5.3"
   build_number: 0
 
 package:
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://github.com/mujocolab/mjlab/archive/refs/tags/v${{ version }}.zip
-  sha256: 30944f4f7cfaf85887ebc62070692d9045a96a7f2ee965d867c4ff80021a8a04
+  sha256: 9e1f2cba4ad05d0a29f8c24efb17bf680d69af0c8a88aa69816f0b6ca842f6ab
 
 build:
   number: ${{ build_number }}
@@ -64,9 +64,7 @@ tests:
       pip_check: true
       python_version: ${{ python_min }}.*
   - script:
-      - pytest tests/
-        --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags"
-        --deselect="tests/test_viewer_tick.py::test_no_spiral"
+      - pytest tests/ --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags" --deselect="tests/test_viewer_tick.py::test_no_spiral"
     files:
       source:
         - pyproject.toml
