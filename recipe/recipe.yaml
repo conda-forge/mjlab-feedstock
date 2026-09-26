@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: mjlab
-  version: "1.5.3"
+  version: 1.6.0
   build_number: 0
 
 package:
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://github.com/mujocolab/mjlab/archive/refs/tags/v${{ version }}.zip
-  sha256: 9e1f2cba4ad05d0a29f8c24efb17bf680d69af0c8a88aa69816f0b6ca842f6ab
+  sha256: 72a2c0235f22b12f3bcc1a05a642d6d8411a036a9a7435c9bf9322e7074dd242
 
 build:
   number: ${{ build_number }}
@@ -39,22 +39,20 @@ requirements:
         - __linux
         - torchrunx >=0.3.4
     - warp-lang >=1.14.0
-    - mujoco-warp >=3.10.0.3,<3.11
-    - mujoco >=3.10.0,<3.11
+    - mujoco-warp >=3.11.0,<3.12.dev0
+    - mujoco >=3.11.0,<3.12.dev0
     - trimesh >=4.8.3
     - scipy >=1.15
     - viser >=1.0.27
     - mjviser >=0.0.14
-    - mediapy >=1.2.6
-    - numpy <2.5
+    - mediapy >=1.2.7
+    - numpy
     - imageio-ffmpeg
     - tensordict
-    - rsl-rl-lib ==5.4.0
+    - rsl-rl-lib ==5.4.2
     - tensorboard >=2.20.0
     - onnxscript >=0.5.4
     - wandb >=0.22.3
-    # Additional deps
-    - ffmpeg >=4
   run_constraints:
     - if: not linux
       then:
@@ -67,9 +65,7 @@ tests:
       pip_check: true
       python_version: ${{ python_min }}.*
   - script:
-      - pytest tests/
-        --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags"
-        --deselect="tests/test_viewer_tick.py::test_no_spiral"
+      - pytest tests/ --deselect "tests/test_tyro_flags.py::test_tyro_cli_calls_have_tyro_flags" --deselect="tests/test_viewer_tick.py::test_no_spiral"
     files:
       source:
         - pyproject.toml
