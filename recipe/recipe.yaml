@@ -39,8 +39,8 @@ requirements:
         - __linux
         - torchrunx >=0.3.4
     - warp-lang >=1.14.0
-    - mujoco-warp >=3.11.0,<3.12.dev0
-    - mujoco >=3.11.0,<3.12.dev0
+    - mujoco-warp >=3.11.0,<3.12
+    - mujoco >=3.11.0,<3.12
     - trimesh >=4.8.3
     - scipy >=1.15
     - viser >=1.0.27
