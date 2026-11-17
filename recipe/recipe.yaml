@@ -27,7 +27,7 @@ requirements:
   host:
     - pip
     - python ${{ python_min }}.*
-    - uv-build
+    - uv-build >=0.12.1,<0.13.0
   run:
     - python >=${{ python_min }}
     - prettytable
